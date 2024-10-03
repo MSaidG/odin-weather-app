@@ -1,7 +1,7 @@
 require('@dotenvx/dotenvx').config()
+const webpack = require('webpack');
 
 const path = require("path")
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
@@ -22,13 +22,13 @@ module.exports = {
             template: "./src/template.html",
         }),
         new NodePolyfillPlugin(),
-        // new Dotenv({
-        //     safe: true,
-        // }),
         new webpack.DefinePlugin({
             "process.env.GIPHY_API_KEY": JSON.stringify(process.env.GIPHY_API_KEY),
-            "process.env.WEATHER_API_KEY": JSON.stringify(process.env.WEATHER_API_KEY)
-        })
+            "process.env.WEATHER_API_KEY": JSON.stringify(process.env.WEATHER_API_KEY),
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser.js',
+        }),
     ],
     module: {
         rules: [

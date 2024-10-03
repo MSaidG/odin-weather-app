@@ -1,3 +1,18 @@
 body {
     background-color: antiquewhite;
 }
+
+
+.info {
+    border: 2px solid black;
+}
+
+.data {
+    border: 2px solid brown;
+    background-color: #FFF;
+}
+
+
+.icon-img {
+    max-height:10rem;
+}
