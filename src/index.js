@@ -121,6 +121,7 @@ const sunset = document.getElementsByClassName('sunset')
 const moonphase = document.getElementsByClassName('moonphase')
 const iconImg = document.getElementsByClassName('icon-img')
 const dir = document.getElementsByClassName('dir')
+const dayName = document.getElementsByClassName('day-name')
 
 
 
@@ -171,6 +172,19 @@ function getCurrentDay()
   return days[day]
 }
 
+function getOtherDay(next)
+{
+  let day = new Date().getDay()
+  console.log(day)
+  day = day + next
+  if (day > 6)
+  {
+    day = day - 7
+  }
+  return days[day]
+}
+
+
 function getCurrentMonth()
 {
   const month = new Date().getMonth()
@@ -208,7 +222,8 @@ function parseTodayWeatherData(response)
 function parseWeatherDailyData(response)
 {
   for (let i = 1; i < temp.length; i++)
-  {
+    {
+    dayName[i-1].textContent = getOtherDay(i)
     temp[i].textContent = response.days[i].temp + " °C"
     selectWeatherIcon(response, i)
     icon[i].textContent = response.days[i].icon.replace("-", " ")
