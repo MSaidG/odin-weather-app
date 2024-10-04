@@ -6,123 +6,356 @@
     <title>Document</title>
 </head>
 <body>
-    <img id="cat" src="#">
-    <img id="tornado" src="#">
-    <p id="weather"></p>
-    <button id="get">GET CAT</button>
-    <label>
-        <span>Location: </span>
-        <input id="location" type="text" placeholder="Search Location">
-    </label>
+    <div id="top">
+        <label>
+            <span>Location: </span>
+            <input id="location" type="text" placeholder="Search Location">
+        </label>
+        
+        <div id="today">
+            <div>
+                <span class="day"></span>
+            </div>
+            <div>
+                <span class="datetime"></span>
+            </div>
+        </div>
+    </div>
 
     <div id="content">
 
         <div id = "current">
             <div class="info">
                 <div>
-                    <span>Latitude: </span>
                     <span id="latitude"></span>
-                </div>
-                <div>
-                    <span>Longitude: </span>
                     <span id="longitude"></span>
                 </div>
                 <div>
-                    <span>Location: </span>
+                    <!-- <span>Location: </span> -->
                     <span id="resolvedAddress"></span>
                 </div>
                 <div>
-                    <span>Time zone: </span>
+                    <!-- <span>Time zone: </span> -->
                     <span id="timezone"></span>
                     <span id="tzoffset"></span>
                 </div>
+                <br>
                 <div>
-                    <span>Description: </span>
+                    <!-- <span>Description: </span> -->
                     <span id="description"></span>
                 </div>
             </div>
             <div class ="data">
-                <div>
-                    <span>Date Time: </span>
-                    <span class="datetime"></span>
+                <div class="data-main">
+                    <div>
+                        <div class="icon-temp">
+                            <img class="icon-img" src="#">
+                            <span class="temp"></span>
+                        </div>
+                        <div>
+                            <span class="icon"></span>
+                        </div>
+                        <div>
+                            <span>Feels like </span>
+                            <span class="feelslike"></span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="wind">
+                            <span>Wind:</span>
+                            <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                                <g transform="translate(20 20)" class="dir">
+                                    <g transform="rotate(0) scale(1 1)">
+                                        <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                        <defs>
+                                            <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                                <polygon points="0,0 3,2 0,4" fill="black" />
+                                            </marker>
+                                        </defs>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="windspeed"></span>
+                        </div>
+                    </div>
+
                 </div>
-                <div>
-                    <span>Day: </span>
-                    <span class="day"></span>
-                </div>
-                <div>
-                    <span>Temp: </span>
-                    <span class="temp"></span>
-                </div>
-                <div>
-                    <span>Feels Like: </span>
-                    <span class="feelslike"></span>
-                </div>
-                <div>
-                    <span>Humidity: </span>
-                    <span class="humidity"></span>
-                </div>
-                <div>
-                    <span>Dew: </span>
-                    <span class="dew"></span>
-                </div>
-                <div>
-                    <span>Wind speed: </span>
-                    <span class="windspeed"></span>
-                </div>
-                <div>
-                    <span>Wind direction: </span>
-                    <span class="winddir"></span>
-                </div>
-                <div>
-                    <span>Pressure: </span>
-                    <span class="pressure"></span>
-                </div>
-                <div>
-                    <span>Visibility: </span>
-                    <span class="visibility"></span>
-                </div>
-                <div>
-                    <span>Cloud cover: </span>
-                    <span class="cloudcover"></span>
-                </div>
-                <div>
-                    <span>Solar radiation: </span>
-                    <span class="solarradiation"></span>
-                </div>
-                <div>
-                    <span>Solar energy: </span>
-                    <span class="solarenergy"></span>
-                </div>
-                <div>
-                    <span>UV Index: </span>
-                    <span class="uvindex"></span>
-                </div>
-                <div>
-                    <span>Conditions: </span>
-                    <span class="conditions"></span>
-                </div>
-                <div>
-                    <span>Icon: </span>
-                    <span class="icon"></span>
-                    <img class="icon-img" src="#">
-                </div>
-                <div>
-                    <span>Sun rise: </span>
-                    <span class="sunrise"></span>
-                </div>
-                <div>
-                    <span>Sun set: </span>
-                    <span class="sunset"></span>
-                </div>
-                <div>
-                    <span>Moon phase: </span>
-                    <span class="moonphase"></span>
+                <div class="data-detail">
+                    <div>
+
+                        <div>
+                            <span>Cloud cover: </span>
+                            <span class="cloudcover"></span>
+                        </div>
+                        <div>
+                            <span>Humidity: </span>
+                            <span class="humidity"></span>
+                        </div>
+                        <div>
+                            <span>Dew: </span>
+                            <span class="dew"></span>
+                        </div>
+                        <div>
+                            <span>Moon phase: </span>
+                            <span class="moonphase"></span>
+                        </div>
+                    </div>
+ 
+                    <div>
+  
+                        <div>
+                            <span>Pressure: </span>
+                            <span class="pressure"></span>
+                        </div>
+                        <div>
+                            <span>Visibility: </span>
+                            <span class="visibility"></span>
+                        </div>
+    
+    
+                        <div>
+                            <span>Sun rise: </span>
+                            <span class="sunrise"></span>
+                        </div>
+                        <div>
+                            <span>Sun set: </span>
+                            <span class="sunset"></span>
+                        </div>
+                    </div>
+                        
+                    <div>
+                        <div>
+                            <span>Solar radiation: </span>
+                            <span class="solarradiation"></span>
+                        </div>
+                        <div>
+                            <span>Solar energy: </span>
+                            <span class="solarenergy"></span>
+                        </div>
+                        <div>
+                            <span>UV Index: </span>
+                            <span class="uvindex"></span>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
         <div id="daily">
-            
+            <div class="days" id="day-1">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="days" id="day-2">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="days" id="day-3">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="days" id="day-4">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="days" id="day-5">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="days" id="day-6">
+                <div>
+                    <div class="icon-temp">
+                        <img class="icon-img" src="#">
+                        <span class="temp"></span>
+                    </div>
+                    <div>
+                        <span class="icon"></span>
+                    </div>
+                    <div>
+                        <span>Feels like </span>
+                        <span class="feelslike"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="wind">
+                        <span>Wind:</span>
+                        <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                            <g transform="translate(20 20)" class="dir">
+                                <g transform="rotate(0) scale(1 1)">
+                                    <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                    <defs>
+                                        <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                            <polygon points="0,0 3,2 0,4" fill="black" />
+                                        </marker>
+                                    </defs>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="windspeed"></span>
+                    </div>
+                </div>
+            </div>
+
+    
         </div>
         <div id="hourly">
 
