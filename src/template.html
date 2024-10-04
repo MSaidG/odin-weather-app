@@ -10,9 +10,16 @@
         <label id="search">
             <span>Location: </span>
             <input id="location" type="text" placeholder="Search Location">
+
         </label>
-        
         <div id="today">
+            <div>
+                <select id="metrics" value="metric">
+                    <option selected value="metric">Metric (°C, km)</option>
+                    <option value="us">us (°F, miles)</option>    
+                    <option value="uk">uk (°C, miles)</option>
+                </select>
+            </div>
             <div>
                 <span class="day"></span>
             </div>
@@ -46,102 +53,109 @@
                 </div>
             </div>
             <div class ="data">
-                <div class="data-main">
-                    <div>
-                        <div class="icon-temp">
-                            <img class="icon-img" src="#">
-                            <span class="temp"></span>
-                        </div>
-                        <div>
-                            <span class="icon"></span>
-                        </div>
-                        <div>
-                            <span>Feels like </span>
-                            <span class="feelslike"></span>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="wind">
-                            <span>Wind:</span>
-                            <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
-                                <g transform="translate(20 20)" class="dir">
-                                    <g transform="rotate(0) scale(1 1)">
-                                        <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
-                                        <defs>
-                                            <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
-                                                <polygon points="0,0 3,2 0,4" fill="black" />
-                                            </marker>
-                                        </defs>
-                                    </g>
-                                </g>
-                            </svg>
-                            <span class="windspeed"></span>
-                        </div>
-                    </div>
-
+                <div>
+                    <span>TODAY</span>
                 </div>
-                <div class="data-detail">
-                    <div>
-
+                <div id="data-content">
+                    <div class="data-main">
                         <div>
-                            <span>Cloud cover: </span>
-                            <span class="cloudcover"></span>
+                            <div class="icon-temp">
+                                <img class="icon-img" src="#">
+                                <span class="temp"></span>
+                            </div>
+                            <div>
+                                <span class="icon"></span>
+                            </div>
+                            <div>
+                                <span>Feels like </span>
+                                <span class="feelslike"></span>
+                            </div>
                         </div>
-                        <div>
-                            <span>Humidity: </span>
-                            <span class="humidity"></span>
-                        </div>
-                        <div>
-                            <span>Dew: </span>
-                            <span class="dew"></span>
-                        </div>
-                        <div>
-                            <span>Moon phase: </span>
-                            <span class="moonphase"></span>
-                        </div>
-                    </div>
- 
-                    <div>
-  
-                        <div>
-                            <span>Pressure: </span>
-                            <span class="pressure"></span>
-                        </div>
-                        <div>
-                            <span>Visibility: </span>
-                            <span class="visibility"></span>
-                        </div>
-    
-    
-                        <div>
-                            <span>Sun rise: </span>
-                            <span class="sunrise"></span>
-                        </div>
-                        <div>
-                            <span>Sun set: </span>
-                            <span class="sunset"></span>
-                        </div>
-                    </div>
                         
-                    <div>
                         <div>
-                            <span>Solar radiation: </span>
-                            <span class="solarradiation"></span>
+                            <div class="wind">
+                                <span>Wind:</span>
+                                <svg width="40" height="40" transform="scale(1 1)" class="wind-arrow">
+                                    <g transform="translate(20 20)" class="dir">
+                                        <g transform="rotate(0) scale(1 1)">
+                                            <line x1="0" y1="-15" x2="0" y2="10" stroke="black" stroke-width="3" marker-end="url(#arrow-head)"/>
+                                            <defs>
+                                                <marker id="arrow-head" markerWidth="3" markerHeight="4" refX="2" refY="2" orient="auto">
+                                                    <polygon points="0,0 3,2 0,4" fill="black" />
+                                                </marker>
+                                            </defs>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span class="windspeed"></span>
+                            </div>
                         </div>
-                        <div>
-                            <span>Solar energy: </span>
-                            <span class="solarenergy"></span>
-                        </div>
-                        <div>
-                            <span>UV Index: </span>
-                            <span class="uvindex"></span>
-                        </div>
+    
                     </div>
-
-
-
+                    <div class="data-detail test">
+                        <div>
+    
+                            <div>
+                                <span>Cloud cover: </span>
+                                <span class="cloudcover"></span>
+                            </div>
+                            <div>
+                                <span>Humidity: </span>
+                                <span class="humidity"></span>
+                            </div>
+                            <div>
+                                <span>Dew: </span>
+                                <span class="dew"></span>
+                            </div>
+                            <div>
+                                <span>Moon phase: </span>
+                                <span class="moonphase"></span>
+                            </div>
+                        </div>
+     
+                        <div>
+      
+                            <div>
+                                <span>Pressure: </span>
+                                <span class="pressure"></span>
+                            </div>
+                            <div>
+                                <span>Visibility: </span>
+                                <span class="visibility"></span>
+                            </div>
+        
+        
+                            <div>
+                                <span>Sun rise: </span>
+                                <span class="sunrise"></span>
+                            </div>
+                            <div>
+                                <span>Sun set: </span>
+                                <span class="sunset"></span>
+                            </div>
+                        </div>
+                            
+                        <div>
+                            <div>
+                                <span>Solar radiation: </span>
+                                <span class="solarradiation"></span>
+                            </div>
+                            <div>
+                                <span>Solar energy: </span>
+                                <span class="solarenergy"></span>
+                            </div>
+                            <div>
+                                <span>UV Index: </span>
+                                <span class="uvindex"></span>
+                            </div>
+                        </div>
+    
+    
+    
+                    </div>
+                    <button id="expand">Expand</button>
                 </div>
+
             </div>
         </div>
         <div id="daily">

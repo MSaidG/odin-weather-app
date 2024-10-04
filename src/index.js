@@ -1,6 +1,6 @@
-import tornado from "./tornado.png"
-import l from './logger.js'
 import "./style.css"
+import l from './logger.js'
+
 import clearDay from "./icons/clear-day.svg"
 import clearNight from "./icons/clear-night.svg"
 import cloudy from "./icons/cloudy.svg"
@@ -28,36 +28,88 @@ import wind from "./icons/wind.svg"
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", 
   "Thursday", "Friday", "Saturday"]
 
-const catImg = document.getElementById('cat');
 const p = document.getElementById('weather');
-let catIcon = "cat"
 
-// function getCat() 
-// {
-//   fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${process.env.GIPHY_API_KEY}&s=${catcatIcon}`, {})
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(response) {
-//     catImg.src = response.data.images.original.url
-//   }).catch(function(err) {
-//     console.log(err.message)
-//     catImg.src = "#"
-//   });
-// }
+const metrics = document.getElementById('metrics')
+metrics.addEventListener("click", () => changeMetrics())
+let tempUnit = " °C"
+let longDistanceUnit = " km"
+let speedUnit = " kph"
 
-// async function getTheCat()
-// {
-//   try {
-//     let response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${process.env.GIPHY_API_KEY}&s=${catcatIcon}`, {})
-//     let responseJSON = await response.json()
-//     catImg.src = responseJSON.data.images.original.url
-//   }
-//   catch (err) {
-//     console.log(err.message)
-//   }
+function changeMetrics() 
+{
+  let url = ""
+  switch(metrics.value) {
+    case "metric":
+      url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ankara/next7days?unitGroup=metric&key=${process.env.WEATHER_API_KEY}&contentType=json`
+      tempUnit = " °C"
+      longDistanceUnit = " km"
+      speedUnit = " kph"
+      break
+    case "us":
+      url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ankara/next7days?unitGroup=us&key=${process.env.WEATHER_API_KEY}&contentType=json`
+      tempUnit = " °F"
+      longDistanceUnit = " miles"
+      speedUnit = " mph"
+      break
+    case "uk":
+      url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ankara/next7days?unitGroup=uk&key=${process.env.WEATHER_API_KEY}&contentType=json`
+      tempUnit = " °C"
+      longDistanceUnit = " miles"
+      speedUnit = " mph"
+      break
+    default:
+      url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ankara/next7days?unitGroup=metric&key=${process.env.WEATHER_API_KEY}&contentType=json`
+      break
+  }
 
-// }
+  getWeather(url)
+}
+
+
+const data = document.getElementsByClassName('data')
+const dataContent = document.getElementById('data-content')
+const dataDetail = document.getElementsByClassName('test')
+const expandButton = document.getElementById('expand')
+
+expandButton.addEventListener('click', () => expandDetails())
+
+function expandDetails()
+{
+  dataContent.classList.toggle('expanded')
+  dataDetail[0].classList.toggle('data-detail')
+  data[0].style.height = "fit-content"
+  dataDetail[0].style.visibility = !dataDetail[0].style.visibility
+  if (expandButton.innerText === "Collapse") 
+  {
+    expandButton.innerText = "Expand"
+  }
+  else
+  {
+    expandButton.innerText = "Collapse"
+  }
+
+  l(window.innerWidth)
+}
+
+window.addEventListener('resize', checkSize);
+
+function checkSize() {
+  l(window.innerWidth)
+  if (window.innerWidth > 768) {
+    if (expandButton.innerText === "Collapse")
+    {
+      expandDetails()
+    }
+  }
+  // if (window.innerWidth < 768) {
+  //   dataContent.classList.remove('expanded')
+  //   dataDetail[0].classList.remove('data-detail')
+  //   data[0].style.height = "auto"
+  //   dataDetail[0].style.visibility = "hidden"
+  //   expandButton.innerText = "Expand"
+  // }
+}
 
 let defaultUrlWeather = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ankara/next7days?unitGroup=metric&key=${process.env.WEATHER_API_KEY}&contentType=json`
 function getWeather(url)
@@ -175,7 +227,6 @@ function getCurrentDay()
 function getOtherDay(next)
 {
   let day = new Date().getDay()
-  console.log(day)
   day = day + next
   if (day > 6)
   {
@@ -185,25 +236,19 @@ function getOtherDay(next)
 }
 
 
-function getCurrentMonth()
-{
-  const month = new Date().getMonth()
-  return month
-}
-
 function parseTodayWeatherData(response)
 {
   datetime[0].textContent = response.days[0].datetime
   day[0].textContent = getCurrentDay() 
-  temp[0].textContent = response.days[0].temp + " °C"
-  feelslike[0].textContent = response.days[0].feelslike + " °C"
+  temp[0].textContent = response.days[0].temp + `${tempUnit}`
+  feelslike[0].textContent = response.days[0].feelslike + `${tempUnit}`
   humidity[0].textContent = response.days[0].humidity + " %"
-  dew[0].textContent = response.days[0].dew + " °C"
-  windspeed[0].textContent = response.days[0].windspeed + " kph"
+  dew[0].textContent = response.days[0].dew + `${tempUnit}`
+  windspeed[0].textContent = response.days[0].windspeed + `${speedUnit}`
   dir[0].setAttribute("transform", `translate(20,20)
      rotate(${response.days[0].winddir})`);
   pressure[0].textContent = response.days[0].pressure + " mb"
-  visibility[0].textContent = response.days[0].visibility + " km"
+  visibility[0].textContent = response.days[0].visibility + `${longDistanceUnit}`
   cloudcover[0].textContent = response.days[0].cloudcover + " % "
   solarradiation[0].textContent = response.days[0].solarradiation + " W/m2"
   solarenergy[0].textContent = response.days[0].solarenergy + " MJ/m2"
@@ -224,15 +269,15 @@ function parseWeatherDailyData(response)
   for (let i = 1; i < temp.length; i++)
     {
     dayName[i-1].textContent = getOtherDay(i)
-    temp[i].textContent = response.days[i].temp + " °C"
+    temp[i].textContent = response.days[i].temp + `${tempUnit}`
     selectWeatherIcon(response, i)
     icon[i].textContent = response.days[i].icon.replace("-", " ")
                     .split(' ')
                     .map(word => word.charAt(0)
                     .toUpperCase() + word.substring(1))
                     .join(' ');
-    feelslike[i].textContent = response.days[i].feelslike + " °C"
-    windspeed[i].textContent = response.days[i].windspeed + " kph"
+    feelslike[i].textContent = response.days[i].feelslike + `${tempUnit}`
+    windspeed[i].textContent = response.days[i].windspeed + `${speedUnit}`
     dir[i].setAttribute("transform", `translate(20,20)
        rotate(${response.days[i].winddir})`);
   }
